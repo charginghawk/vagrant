@@ -39,7 +39,8 @@ sed -i -- 's/AllowOverride None/AllowOverride all/g' /etc/apache2/apache2.conf
 sed -i -- 's/128M/512M/g' /etc/php5/apache2/php.ini
 echo 'xdebug.remote_enable = on' >> /etc/php5/mods-available/xdebug.ini
 echo 'xdebug.remote_connect_back = on' >> /etc/php5/mods-available/xdebug.ini
-echo 'xdebug.max_nesting_level=256' >> /etc/php5/mods-available/xdebug.ini
+echo 'xdebug.max_nesting_level = 256' >> /etc/php5/mods-available/xdebug.ini
+echo 'xdebug.idekey = "vagrant"' >> /etc/php5/mods-available/xdebug.ini
 a2enmod rewrite
 service apache2 restart
 
