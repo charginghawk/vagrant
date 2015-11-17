@@ -27,7 +27,7 @@ This is currently setup for D8. To use with D7:
  - Vagrantfile
   - Switch config.vm.box from ubuntu/vivid64 to ubuntu/trusty64
  - bootstrap.sh
-  - Switch drush version from drush:7.* to drush:dev-master
+  - Switch drush version from drush:dev-master to drush:7.*
   - You can also comment out the section that installs drupal console
 
 Works great with [Sequel Pro](http://www.sequelpro.com/) - just configure [like so](http://i.imgur.com/Q8bG2X2.png).
