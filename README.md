@@ -27,7 +27,7 @@ This is currently setup for D6. To use with D7 or D8, switch branches.
 
 Works great with [Sequel Pro](http://www.sequelpro.com/) - just configure [like so](http://i.imgur.com/Q8bG2X2.png).
 
-To use xdebug with PhpStorm, create a [server](http://i.imgur.com/kylD5wX.png), add a [run/debug configuration](http://i.imgur.com/qwhfCU9.png), and [turn it on](http://i.imgur.com/IAqsvZy.png).
+To use xdebug with PhpStorm, create a [server](http://i.imgur.com/kylD5wX.png), add a [run/debug configuration](http://i.imgur.com/tKlvLdD.png), and [turn it on](http://i.imgur.com/IAqsvZy.png).
 
 # Caveats / Gotchas
 
