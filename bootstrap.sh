@@ -23,9 +23,7 @@ if ! [ -x "$(command -v composer)" ]; then
     ln -s /home/vagrant/composer.phar /usr/local/bin/composer;
 fi
 if ! [ -x "$(command -v drush)" ]; then
-# Swap drush versions as appropriate
-#    /home/vagrant/composer.phar global require drush/drush:7.*;
-    /home/vagrant/composer.phar global require drush/drush:dev-master;
+    /home/vagrant/composer.phar global require drush/drush:8.*;
     mv /root/.composer /home/vagrant/;
     ln -s /home/vagrant/.composer/vendor/drush/drush/drush /usr/local/bin/drush;
 fi

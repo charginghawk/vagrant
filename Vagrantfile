@@ -8,8 +8,6 @@ Vagrant.configure(2) do |config|
   config.vm.network "private_network", ip: "192.168.50.1"
 
 # Choose what OS your VM will run, see: atlas.hashicorp.com/search
-# vivid for D8, trusty for D7
-#  config.vm.box = "ubuntu/trusty64"
   config.vm.box = "ubuntu/vivid64"
 
 # Provisioning shell script
