@@ -23,9 +23,7 @@ if ! [ -x "$(command -v composer)" ]; then
     ln -s /home/vagrant/composer.phar /usr/local/bin/composer;
 fi
 if ! [ -x "$(command -v drush)" ]; then
-# Swap drush versions as appropriate
-#    /home/vagrant/composer.phar global require drush/drush:7.*;
-    /home/vagrant/composer.phar global require drush/drush:dev-master;
+    /home/vagrant/composer.phar global require drush/drush:8.*;
     mv /root/.composer /home/vagrant/;
     ln -s /home/vagrant/.composer/vendor/drush/drush/drush /usr/local/bin/drush;
 fi
@@ -45,10 +43,6 @@ echo 'xdebug.max_nesting_level = 256' >> /etc/php5/mods-available/xdebug.ini
 echo 'xdebug.idekey = "PHPSTORM"' >> /etc/php5/mods-available/xdebug.ini
 a2enmod rewrite
 service apache2 restart
-
-# Install drupal console
-curl -LSs http://drupalconsole.com/installer | php
-mv console.phar /usr/local/bin/drupal
 
 echo "mysql credentials: username: root, database: vagrant, no password.";
 
