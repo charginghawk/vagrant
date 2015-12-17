@@ -14,7 +14,7 @@ apt-get install -y nfs-common
 apt-get install -y nfs-kernel-server
 
 # Install mysql
-DEBIAN_PRIORITY=critical apt-get install -y mysql-server-5.1
+DEBIAN_PRIORITY=critical apt-get install -y mysql-server
 mysql -uroot -e "create database vagrant;"
 
 # Install drush
