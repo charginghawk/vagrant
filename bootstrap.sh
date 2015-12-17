@@ -12,8 +12,10 @@ apt-get install -y php5-curl
 apt-get install -y php5-xdebug
 apt-get install -y nfs-common
 apt-get install -y nfs-kernel-server
-# mysql username is root, no password
+
+# Install mysql
 DEBIAN_PRIORITY=critical apt-get install -y mysql-server
+mysql -uroot -e "create database vagrant;"
 
 # Install drush
 if ! [ -x "$(command -v composer)" ]; then
@@ -29,7 +31,7 @@ if ! [ -x "$(command -v drush)" ]; then
 fi
 
 # Create symlink from /vagrant/docroot to /var/www/html (assuming site code is in 'docroot' directory)
-if ! [ -L /var/www ]; then
+if ! [ -L /var/www/html ]; then
   rm -rf /var/www/html
   ln -fs /vagrant/docroot /var/www/html
 fi
@@ -40,11 +42,13 @@ sed -i -- 's/128M/512M/g' /etc/php5/apache2/php.ini
 echo 'xdebug.remote_enable = on' >> /etc/php5/mods-available/xdebug.ini
 echo 'xdebug.remote_connect_back = on' >> /etc/php5/mods-available/xdebug.ini
 echo 'xdebug.max_nesting_level = 256' >> /etc/php5/mods-available/xdebug.ini
-echo 'xdebug.idekey = "vagrant"' >> /etc/php5/mods-available/xdebug.ini
+echo 'xdebug.idekey = "PHPSTORM"' >> /etc/php5/mods-available/xdebug.ini
 a2enmod rewrite
 service apache2 restart
 
 # Install drupal console
 curl -LSs http://drupalconsole.com/installer | php
 mv console.phar /usr/local/bin/drupal
+
+echo "mysql credentials: username: root, database: vagrant, no password.";
 
