@@ -5,10 +5,10 @@ Vagrant.configure(2) do |config|
 
 # Sets the IP where you can access the site
 # Change the IP to unique value (usually by incrementing by 1)
-  config.vm.network "private_network", ip: "192.168.50.1"
+  config.vm.network "private_network", ip: "192.168.50.2"
 
 # Choose what OS your VM will run, see: atlas.hashicorp.com/search
-  config.vm.box = "ubuntu/precise64"
+  config.vm.box = "f500/ubuntu-lucid64"
 
 # Provisioning shell script
   config.vm.provision :shell, path: "bootstrap.sh"

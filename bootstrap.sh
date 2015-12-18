@@ -19,11 +19,11 @@ mysql -uroot -e "create database vagrant;"
 
 # Install drush
 if ! [ -x "$(command -v composer)" ]; then
-    sudo curl -sS https://getcomposer.org/installer | php;
+    sudo curl -sS https://getcomposer.org/installer | sudo php;
     ln -s /home/vagrant/composer.phar /usr/local/bin/composer;
 fi
 if ! [ -x "$(command -v drush)" ]; then
-    /home/vagrant/composer.phar global require drush/drush:7.*;
+    /home/vagrant/composer.phar global require drush/drush:6.*;
     mv /root/.composer /home/vagrant/;
     ln -s /home/vagrant/.composer/vendor/drush/drush/drush /usr/local/bin/drush;
 fi
