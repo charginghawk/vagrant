@@ -17,15 +17,23 @@ apt-get install -y nfs-kernel-server
 DEBIAN_PRIORITY=critical apt-get install -y mysql-server
 mysql -uroot -e "create database vagrant;"
 
-# Install drush
+# Install composer
 if ! [ -x "$(command -v composer)" ]; then
-    sudo curl -sS https://getcomposer.org/installer | php;
-    ln -s /home/vagrant/composer.phar /usr/local/bin/composer;
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer;
 fi
+
+# Install drush
 if ! [ -x "$(command -v drush)" ]; then
-    /home/vagrant/composer.phar global require drush/drush:8.*;
-    mv /root/.composer /home/vagrant/;
-    ln -s /home/vagrant/.composer/vendor/drush/drush/drush /usr/local/bin/drush;
+    wget http://files.drush.org/drush.phar
+    chmod +x drush.phar
+    mv drush.phar /usr/local/bin/drush
+fi
+
+# Install drupal console
+if ! [ -x "$(command -v drupal)" ]; then
+    curl https://drupalconsole.com/installer -L -o drupal.phar
+    mv drupal.phar /usr/local/bin/drupal
+    chmod +x /usr/local/bin/drupal
 fi
 
 # Create symlink from /vagrant/docroot to /var/www/html (assuming site code is in 'docroot' directory)
@@ -43,10 +51,6 @@ echo 'xdebug.max_nesting_level = 256' >> /etc/php5/mods-available/xdebug.ini
 echo 'xdebug.idekey = "PHPSTORM"' >> /etc/php5/mods-available/xdebug.ini
 a2enmod rewrite
 service apache2 restart
-
-# Install drupal console
-curl -LSs http://drupalconsole.com/installer | php
-mv console.phar /usr/local/bin/drupal
 
 echo "mysql credentials: username: root, database: vagrant, no password.";
 
