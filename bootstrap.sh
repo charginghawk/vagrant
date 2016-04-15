@@ -17,15 +17,16 @@ apt-get install -y nfs-kernel-server
 DEBIAN_PRIORITY=critical apt-get install -y mysql-server
 mysql -uroot -e "create database vagrant;"
 
-# Install drush
+# Install composer
 if ! [ -x "$(command -v composer)" ]; then
-    sudo curl -sS https://getcomposer.org/installer | php;
-    ln -s /home/vagrant/composer.phar /usr/local/bin/composer;
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer;
 fi
+
+# Install drush
 if ! [ -x "$(command -v drush)" ]; then
-    /home/vagrant/composer.phar global require drush/drush:8.*;
-    mv /root/.composer /home/vagrant/;
-    ln -s /home/vagrant/.composer/vendor/drush/drush/drush /usr/local/bin/drush;
+    wget http://files.drush.org/drush.phar
+    chmod +x drush.phar
+    mv drush.phar /usr/local/bin/drush
 fi
 
 # Create symlink from /vagrant/docroot to /var/www/html (assuming site code is in 'docroot' directory)
