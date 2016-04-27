@@ -44,7 +44,9 @@ fi
 
 # Set server config
 sed -i -- 's/AllowOverride None/AllowOverride all/g' /etc/apache2/apache2.conf
-sed -i -- 's/128M/512M/g' /etc/php5/apache2/php.ini
+sed -i -- 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php5/apache2/php.ini
+sed -i -- 's/upload_max_filesize = 2M/upload_max_filesize = 256M/g' /etc/php5/apache2/php.ini
+sed -i -- 's/post_max_size = 8M/post_max_size = 256M/g' /etc/php5/apache2/php.ini
 echo 'xdebug.remote_enable = on' >> /etc/php5/mods-available/xdebug.ini
 echo 'xdebug.remote_connect_back = on' >> /etc/php5/mods-available/xdebug.ini
 echo 'xdebug.max_nesting_level = 256' >> /etc/php5/mods-available/xdebug.ini
